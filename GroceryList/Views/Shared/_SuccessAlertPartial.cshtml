@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@if (TempData["alertMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show mt-4" role="alert" id="alertMessage">
+        @TempData["alertMessage"]
+    </div>
+    <script>setTimeout(() => { $("#alertMessage").alert("close") }, 3000)</script>
+
+}
