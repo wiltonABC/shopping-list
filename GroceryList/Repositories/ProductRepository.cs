@@ -41,6 +41,9 @@ namespace GroceryList.Repositories
         {
             dbSet.Update(product);
 
+            applicationContext.Entry(product).Property(s => s.CreationDate)
+                .IsModified = false;
+
             await applicationContext.SaveChangesAsync();
         }
     }

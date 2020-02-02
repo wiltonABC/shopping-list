@@ -27,6 +27,9 @@ namespace GroceryList
 
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IShoppingListRepository, ShoppingListRepository>();
+            services.AddTransient<ISupermarketRepository, SupermarketRepository>();
+            services.AddTransient<ISupermarketCategoriesRepository, SupermarketCategoriesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

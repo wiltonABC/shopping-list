@@ -39,3 +39,37 @@ $("#productsTable").on("click", (e) => {
     removeRecord(e, "/Products/Delete/");
 
 });
+
+$("#supermarketCategoriesTable").on("click", (e) => {
+
+    removeRecord(e, "/Supermarkets/Delete/");
+
+});
+
+$("#supermarketCategoryForm").on("submit", e => {
+
+    e.preventDefault();
+
+    var form = e.target;
+    var url = form.getAttribute("action");
+    var formData = $(form).serialize();
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: formData,
+        success: function (data) {
+            //Render new item
+            $("#supermarketCategoriesTable tbody")
+                .append(data);
+
+            var table = $("#supermarketCategoriesTable");
+            if (table.hasClass("invisible"))
+              table.toggleClass("invisible visible");
+        },
+        error: function () {
+            alert("Error adding new category");
+        }
+    });
+
+});

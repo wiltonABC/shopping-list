@@ -23,6 +23,9 @@
     <Folder Include="Repositories\" />
     <Folder Include="Views\Shared\Forms\" />
     <Folder Include="Views\Products\" />
-    <Folder Include="Views\ShoppingList\" />
+    <Folder Include="Views\ShoppingLists\" />
+    <Folder Include="Views\Supermarkets\" />
+    <Folder Include="TagHelpers\" />
+    <Folder Include="Views\Shared\Tables\" />
   </ItemGroup>
 </Project>

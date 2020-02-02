@@ -13,6 +13,8 @@ namespace GroceryList.Models
 
         public IList<Product> Products { get; set; }
 
+        public IList<SupermarketCategories> SupermarketCategories { get; set; }
+
         public Category()
         {
 

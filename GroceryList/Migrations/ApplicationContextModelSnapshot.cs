@@ -25,6 +25,11 @@ namespace GroceryList.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime?>("CreationDate")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("getdate()");
+
                     b.Property<string>("Description")
                         .IsRequired();
 
@@ -39,6 +44,11 @@ namespace GroceryList.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("Checked");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<decimal>("Price");
 
@@ -96,11 +106,58 @@ namespace GroceryList.Migrations
 
                     b.Property<DateTime>("ShoppingDate");
 
+                    b.Property<int>("SupermarketId");
+
                     b.Property<decimal>("Total");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SupermarketId");
+
                     b.ToTable("ShoppingList");
+                });
+
+            modelBuilder.Entity("GroceryList.Models.Supermarket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("CreationDate")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("getdate()");
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Supermarket");
+                });
+
+            modelBuilder.Entity("GroceryList.Models.SupermarketCategories", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("getdate()");
+
+                    b.Property<int>("Order");
+
+                    b.Property<int>("SupermarketId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("SupermarketId");
+
+                    b.ToTable("SupermarketCategories");
                 });
 
             modelBuilder.Entity("GroceryList.Models.ListItem", b =>
@@ -121,6 +178,27 @@ namespace GroceryList.Migrations
                     b.HasOne("GroceryList.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("GroceryList.Models.ShoppingList", b =>
+                {
+                    b.HasOne("GroceryList.Models.Supermarket", "Supermarket")
+                        .WithMany("ShoppingLists")
+                        .HasForeignKey("SupermarketId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GroceryList.Models.SupermarketCategories", b =>
+                {
+                    b.HasOne("GroceryList.Models.Category", "Category")
+                        .WithMany("SupermarketCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("GroceryList.Models.Supermarket", "Supermarket")
+                        .WithMany("SupermarketCategories")
+                        .HasForeignKey("SupermarketId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

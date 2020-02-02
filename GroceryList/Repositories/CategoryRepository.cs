@@ -39,6 +39,10 @@ namespace GroceryList.Repositories
         public async Task UpdateCategory(Category category)
         {
             dbSet.Update(category);
+
+            applicationContext.Entry(category).Property(s => s.CreationDate)
+                .IsModified = false;
+
             await applicationContext.SaveChangesAsync();
         }
     }

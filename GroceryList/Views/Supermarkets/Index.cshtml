@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Supermarkets";
+}
+
+@model List<Supermarket>;
+
+@{ await Html.RenderPartialAsync("_SuccessAlertPartial"); }
+
+<a asp-action="Create" class="btn btn-primary mt-4 whiteAnchor">Add New</a>
+<hr />
+<h2>Supermarkets List</h2>
+<table class="table" id="supermarketsTable">
+    <thead>
+        <tr>
+            <th class="actionsCell">#</th>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Creation Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var supermarket in Model)
+        {
+            <tr>
+                <td>
+                    <i id="deleteButton" data-id="@supermarket.Id" class="material-icons cursorPointer">delete</i>
+                    <a asp-action="Edit" asp-route-id="@supermarket.Id" class="blackAnchor"><i class="material-icons">edit</i></a>
+                </td>
+                <td>@supermarket.Id</td>
+                <td>@supermarket.Description</td>
+                <td>@supermarket.CreationDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    await Html.RenderPartialAsync("_ConfirmationModalPartial");
+}

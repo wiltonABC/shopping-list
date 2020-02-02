@@ -12,9 +12,6 @@ namespace GroceryList.Models
         [DataMember]
         public string Description { get; set; }
 
-        [DataMember]
-        public DateTime? CreationDate { get; set; }
-
         [Required]
         [DataMember]
         public DateTime ShoppingDate { get; set; }
@@ -23,6 +20,12 @@ namespace GroceryList.Models
 
         [DataMember]
         public decimal Total { get; set; }
+
+        [DataMember]
+        public Supermarket Supermarket { get; set; }
+
+        [DataMember]
+        public int SupermarketId { get; set; }
 
         public ShoppingList()
         {

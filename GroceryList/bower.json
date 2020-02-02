@@ -6,6 +6,7 @@
     "jquery": "3.4.1",
     "jquery-validation": "1.19.1",
     "jquery-validation-unobtrusive": "3.2.6",
-    "octicons": "9.3.1"
+    "octicons": "9.3.1",
+    "jquery-ui": "1.12.1"
   }
 }

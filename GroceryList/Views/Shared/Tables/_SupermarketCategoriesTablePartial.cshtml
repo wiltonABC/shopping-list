@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IList<SupermarketCategories>;
+
+<table id="supermarketCategoriesTable" class="mt-4 table @( Model.Count == 0 ? "invisible" : "visible" )">
+    <thead>
+        <tr>
+            <th class="actionsCell">#</th>
+            <th>Category</th>
+            <th>Order</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td><i id="deleteButton" data-id="@item.Id" class="material-icons cursorPointer">delete</i></td>
+            <td>@item.Category.Description</td>
+            <td>@item.Order</td>
+        </tr>
+        }
+    </tbody>
+</table>

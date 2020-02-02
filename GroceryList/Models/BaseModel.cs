@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
 namespace GroceryList.Models
@@ -8,5 +9,8 @@ namespace GroceryList.Models
     {
         [DataMember]
         public int Id { get; set; }
+
+        [DataMember]
+        public DateTime? CreationDate { get; set; }
     }
 }

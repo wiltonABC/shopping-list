@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    ViewData["Title"] = "Supermarkets - Create";
+
+}
+
+@model Supermarket;
+
+<h2 class="mt-4">Supermarket Creation Form</h2>
+
+<form asp-action="Save" method="post">
+    <div class="form-group">
+
+        @{ await Html.RenderPartialAsync("Forms/_SupermarketsFormPartial"); }
+
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@{ await Html.RenderPartialAsync("Forms/_SupermarketsCategoriesFormPartial",
+          new SupermarketCategories { SupermarketId = Model.Id }); }
+
+
+@{ await Html.RenderPartialAsync("Tables/_SupermarketCategoriesTablePartial",
+            new List<SupermarketCategories>()); }
+
+@{
+    await Html.RenderPartialAsync("_ConfirmationModalPartial");
+}

@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model Supermarket
+
+<div class="form-group">
+    <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+    <label for="productDescription">Description</label>
+    <input type="text" class="form-control" id="productDescription" asp-for="@Model.Description" placeholder="Supermarket Description" value="@Model?.Description" />
+    <span asp-validation-for="@Model.Description" class="text-danger"></span>
+</div>
+

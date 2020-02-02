@@ -14,9 +14,6 @@ namespace GroceryList.Models
         public string Description { get; set; }
 
         [DataMember]
-        public DateTime? CreationDate { get; set; }
-
-        [DataMember]
         public string Barcode { get; set; }
 
         [DataMember]

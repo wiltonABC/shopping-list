@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model SupermarketCategories;
+
+<hr />
+
+<h3>Product Categories Layout</h3>
+
+<form id="supermarketCategoryForm" asp-action="AddCategory" method="post">
+    <secure-hidden asp-for="@Model.SupermarketId" id="supermarketId" value="@Model.SupermarketId"></secure-hidden>
+
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" id="category" asp-for="@Model.CategoryId" asp-items="ViewBag.Categories">
+            <option>-- Select Category --</option>
+        </select>
+        <span asp-validation-for="@Model.CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="order">Shelf Order</label>
+        <input type="text" class="form-control" id="order" asp-for="@Model.Order" placeholder="Shelf Order" />
+        <span asp-validation-for="@Model.Order" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
